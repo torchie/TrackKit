@@ -1,0 +1,489 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F6B52AE41923FA210001862A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6B52AE31923FA210001862A /* Cocoa.framework */; };
+		F6B52AE61923FA210001862A /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6B52AE51923FA210001862A /* SpriteKit.framework */; };
+		F6B52AF01923FA210001862A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6B52AEE1923FA210001862A /* InfoPlist.strings */; };
+		F6B52AF21923FA210001862A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B52AF11923FA210001862A /* main.m */; };
+		F6B52AF61923FA210001862A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F6B52AF41923FA210001862A /* Credits.rtf */; };
+		F6B52AF81923FA220001862A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6B52AF71923FA220001862A /* MainMenu.xib */; };
+		F6B52AFA1923FA220001862A /* TKMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B52AF91923FA220001862A /* TKMyScene.m */; };
+		F6B52AFD1923FA220001862A /* TKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B52AFC1923FA220001862A /* TKAppDelegate.m */; };
+		F6B52B001923FA220001862A /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = F6B52AFF1923FA220001862A /* Spaceship.png */; };
+		F6B52B021923FA220001862A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6B52B011923FA220001862A /* Images.xcassets */; };
+		F6B52B091923FA220001862A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6B52B081923FA220001862A /* XCTest.framework */; };
+		F6B52B0A1923FA220001862A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6B52AE31923FA210001862A /* Cocoa.framework */; };
+		F6B52B121923FA220001862A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6B52B101923FA220001862A /* InfoPlist.strings */; };
+		F6B52B141923FA220001862A /* TrackKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B52B131923FA220001862A /* TrackKitTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F6B52B0B1923FA220001862A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F6B52AD81923FA210001862A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F6B52ADF1923FA210001862A;
+			remoteInfo = TrackKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F6B52AE01923FA210001862A /* TrackKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6B52AE31923FA210001862A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F6B52AE51923FA210001862A /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		F6B52AE81923FA210001862A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F6B52AE91923FA210001862A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F6B52AEA1923FA210001862A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F6B52AED1923FA210001862A /* TrackKit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TrackKit-Info.plist"; sourceTree = "<group>"; };
+		F6B52AEF1923FA210001862A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F6B52AF11923FA210001862A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F6B52AF31923FA210001862A /* TrackKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TrackKit-Prefix.pch"; sourceTree = "<group>"; };
+		F6B52AF51923FA210001862A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		F6B52AF71923FA220001862A /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		F6B52AF91923FA220001862A /* TKMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKMyScene.m; sourceTree = "<group>"; };
+		F6B52AFB1923FA220001862A /* TKMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKMyScene.h; sourceTree = "<group>"; };
+		F6B52AFC1923FA220001862A /* TKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKAppDelegate.m; sourceTree = "<group>"; };
+		F6B52AFE1923FA220001862A /* TKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKAppDelegate.h; sourceTree = "<group>"; };
+		F6B52AFF1923FA220001862A /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		F6B52B011923FA220001862A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F6B52B071923FA220001862A /* TrackKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6B52B081923FA220001862A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F6B52B0F1923FA220001862A /* TrackKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TrackKitTests-Info.plist"; sourceTree = "<group>"; };
+		F6B52B111923FA220001862A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F6B52B131923FA220001862A /* TrackKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrackKitTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F6B52ADD1923FA210001862A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6B52AE61923FA210001862A /* SpriteKit.framework in Frameworks */,
+				F6B52AE41923FA210001862A /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6B52B041923FA220001862A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6B52B0A1923FA220001862A /* Cocoa.framework in Frameworks */,
+				F6B52B091923FA220001862A /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F6B52AD71923FA210001862A = {
+			isa = PBXGroup;
+			children = (
+				F6B52AEB1923FA210001862A /* TrackKit */,
+				F6B52B0D1923FA220001862A /* TrackKitTests */,
+				F6B52AE21923FA210001862A /* Frameworks */,
+				F6B52AE11923FA210001862A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F6B52AE11923FA210001862A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F6B52AE01923FA210001862A /* TrackKit.app */,
+				F6B52B071923FA220001862A /* TrackKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F6B52AE21923FA210001862A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F6B52AE31923FA210001862A /* Cocoa.framework */,
+				F6B52AE51923FA210001862A /* SpriteKit.framework */,
+				F6B52B081923FA220001862A /* XCTest.framework */,
+				F6B52AE71923FA210001862A /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F6B52AE71923FA210001862A /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F6B52AE81923FA210001862A /* AppKit.framework */,
+				F6B52AE91923FA210001862A /* CoreData.framework */,
+				F6B52AEA1923FA210001862A /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		F6B52AEB1923FA210001862A /* TrackKit */ = {
+			isa = PBXGroup;
+			children = (
+				F6B52AF71923FA220001862A /* MainMenu.xib */,
+				F6B52AF91923FA220001862A /* TKMyScene.m */,
+				F6B52AFB1923FA220001862A /* TKMyScene.h */,
+				F6B52AFC1923FA220001862A /* TKAppDelegate.m */,
+				F6B52AFE1923FA220001862A /* TKAppDelegate.h */,
+				F6B52AFF1923FA220001862A /* Spaceship.png */,
+				F6B52B011923FA220001862A /* Images.xcassets */,
+				F6B52AEC1923FA210001862A /* Supporting Files */,
+			);
+			path = TrackKit;
+			sourceTree = "<group>";
+		};
+		F6B52AEC1923FA210001862A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F6B52AED1923FA210001862A /* TrackKit-Info.plist */,
+				F6B52AEE1923FA210001862A /* InfoPlist.strings */,
+				F6B52AF11923FA210001862A /* main.m */,
+				F6B52AF31923FA210001862A /* TrackKit-Prefix.pch */,
+				F6B52AF41923FA210001862A /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F6B52B0D1923FA220001862A /* TrackKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				F6B52B131923FA220001862A /* TrackKitTests.m */,
+				F6B52B0E1923FA220001862A /* Supporting Files */,
+			);
+			path = TrackKitTests;
+			sourceTree = "<group>";
+		};
+		F6B52B0E1923FA220001862A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F6B52B0F1923FA220001862A /* TrackKitTests-Info.plist */,
+				F6B52B101923FA220001862A /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F6B52ADF1923FA210001862A /* TrackKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6B52B171923FA220001862A /* Build configuration list for PBXNativeTarget "TrackKit" */;
+			buildPhases = (
+				F6B52ADC1923FA210001862A /* Sources */,
+				F6B52ADD1923FA210001862A /* Frameworks */,
+				F6B52ADE1923FA210001862A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TrackKit;
+			productName = TrackKit;
+			productReference = F6B52AE01923FA210001862A /* TrackKit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F6B52B061923FA220001862A /* TrackKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6B52B1A1923FA220001862A /* Build configuration list for PBXNativeTarget "TrackKitTests" */;
+			buildPhases = (
+				F6B52B031923FA220001862A /* Sources */,
+				F6B52B041923FA220001862A /* Frameworks */,
+				F6B52B051923FA220001862A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F6B52B0C1923FA220001862A /* PBXTargetDependency */,
+			);
+			name = TrackKitTests;
+			productName = TrackKitTests;
+			productReference = F6B52B071923FA220001862A /* TrackKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F6B52AD81923FA210001862A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TK;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Sky Print";
+				TargetAttributes = {
+					F6B52B061923FA220001862A = {
+						TestTargetID = F6B52ADF1923FA210001862A;
+					};
+				};
+			};
+			buildConfigurationList = F6B52ADB1923FA210001862A /* Build configuration list for PBXProject "TrackKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F6B52AD71923FA210001862A;
+			productRefGroup = F6B52AE11923FA210001862A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F6B52ADF1923FA210001862A /* TrackKit */,
+				F6B52B061923FA220001862A /* TrackKitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F6B52ADE1923FA210001862A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6B52B001923FA220001862A /* Spaceship.png in Resources */,
+				F6B52B021923FA220001862A /* Images.xcassets in Resources */,
+				F6B52AF01923FA210001862A /* InfoPlist.strings in Resources */,
+				F6B52AF61923FA210001862A /* Credits.rtf in Resources */,
+				F6B52AF81923FA220001862A /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6B52B051923FA220001862A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6B52B121923FA220001862A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F6B52ADC1923FA210001862A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6B52AF21923FA210001862A /* main.m in Sources */,
+				F6B52AFD1923FA220001862A /* TKAppDelegate.m in Sources */,
+				F6B52AFA1923FA220001862A /* TKMyScene.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6B52B031923FA220001862A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6B52B141923FA220001862A /* TrackKitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F6B52B0C1923FA220001862A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F6B52ADF1923FA210001862A /* TrackKit */;
+			targetProxy = F6B52B0B1923FA220001862A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F6B52AEE1923FA210001862A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6B52AEF1923FA210001862A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F6B52AF41923FA210001862A /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6B52AF51923FA210001862A /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		F6B52B101923FA220001862A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6B52B111923FA220001862A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F6B52B151923FA220001862A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F6B52B161923FA220001862A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F6B52B181923FA220001862A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TrackKit/TrackKit-Prefix.pch";
+				INFOPLIST_FILE = "TrackKit/TrackKit-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F6B52B191923FA220001862A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TrackKit/TrackKit-Prefix.pch";
+				INFOPLIST_FILE = "TrackKit/TrackKit-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F6B52B1B1923FA220001862A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TrackKit.app/Contents/MacOS/TrackKit";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TrackKit/TrackKit-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "TrackKitTests/TrackKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		F6B52B1C1923FA220001862A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TrackKit.app/Contents/MacOS/TrackKit";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TrackKit/TrackKit-Prefix.pch";
+				INFOPLIST_FILE = "TrackKitTests/TrackKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F6B52ADB1923FA210001862A /* Build configuration list for PBXProject "TrackKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6B52B151923FA220001862A /* Debug */,
+				F6B52B161923FA220001862A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6B52B171923FA220001862A /* Build configuration list for PBXNativeTarget "TrackKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6B52B181923FA220001862A /* Debug */,
+				F6B52B191923FA220001862A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F6B52B1A1923FA220001862A /* Build configuration list for PBXNativeTarget "TrackKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6B52B1B1923FA220001862A /* Debug */,
+				F6B52B1C1923FA220001862A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F6B52AD81923FA210001862A /* Project object */;
+}
