@@ -7,6 +7,7 @@
 //
 
 #import "TKMyScene.h"
+#import "TKDetectorView.h"
 
 @implementation TKMyScene
 
@@ -28,9 +29,15 @@
     return self;
 }
 
+
+-(void)setDetector:(TKDetectorView*)view {
+    detector = view;
+}
+
+
 -(void)mouseDown:(NSEvent *)theEvent {
      /* Called when a mouse click occurs */
-    
+    NSLog(@"Click detected");
     CGPoint location = [theEvent locationInNode:self];
     
     SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
@@ -46,7 +53,11 @@
 }
 
 -(void)update:(CFTimeInterval)currentTime {
+    //CGWarpMouseCursorPosition(CGPointMake((CGFloat)self.size.width/2, (CGFloat)self.size.height/2));
     /* Called before each frame is rendered */
+    
+    [detector getTouches];
+    NSLog(@" touches %@", [detector getTouches]);
 }
 
 @end

@@ -8,6 +8,10 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface TKMyScene : SKScene
-
+@class TKDetectorView;
+@interface TKMyScene : SKScene {
+    TKDetectorView* detector;
+    NSSet* detector_touches;
+}
+-(void)setDetector:(TKDetectorView*)view;
 @end

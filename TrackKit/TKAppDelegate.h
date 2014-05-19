@@ -12,6 +12,7 @@
 @interface TKAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSView* tkdetector;
 @property (assign) IBOutlet SKView *skView;
 
 @end

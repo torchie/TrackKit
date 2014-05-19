@@ -8,16 +8,20 @@
 
 #import "TKAppDelegate.h"
 #import "TKMyScene.h"
+#import "TKDetectorView.h"
 
 @implementation TKAppDelegate
 
 @synthesize window = _window;
-
+@synthesize tkdetector = _tkdetector;
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     /* Pick a size for the scene */
-    SKScene *scene = [TKMyScene sceneWithSize:CGSizeMake(1024, 768)];
+    TKMyScene* scene = [TKMyScene sceneWithSize:CGSizeMake(1024, 768)];
+    TKDetectorView* detector = [[TKDetectorView alloc] initWithFrame:NSMakeRect(scene.position.x, scene.position.y, scene.size.width, scene.size.height)];
 
+    [scene setDetector:detector];
+    
     /* Set the scale mode to scale to fit the window */
     scene.scaleMode = SKSceneScaleModeAspectFit;
 
