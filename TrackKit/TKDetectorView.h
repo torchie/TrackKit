@@ -8,10 +8,10 @@
 /*
 What TrackKit will do that NSTouch and UIGestureRecognizer won't:
  
- — detect direction in 360 degrees.
+ — detect movement direction in 360 degrees.
  - detect acceleration.
- 
- - detect overlapping regions and crossover between regions.
+
+ - detect overlapping and crossover between user defined regions.
  
  
 */
@@ -19,10 +19,15 @@ What TrackKit will do that NSTouch and UIGestureRecognizer won't:
 
 #import <Cocoa/Cocoa.h>
 
-@interface TKTouch: NSObject {
+@interface TKTouch: NSTouch {
     NSUInteger velocity;
     NSUInteger acceleration;
     NSUInteger direction;
+    NSSet* intersected_regions;
+    
+    CGFloat x;
+    CGFloat y;
+    
     id unique_id; //Uses NSTouch identity.
     id device;
 }
@@ -36,14 +41,15 @@ What TrackKit will do that NSTouch and UIGestureRecognizer won't:
 
 @interface TKDetectorView : NSView {
     NSSet* touches; //This set is derived from the raw set coming from the OSX API.
-    NSSet* trackpad_regions;
+    NSMutableDictionary* trackpad_regions;
     IBOutlet NSView* view_outlet;
     BOOL visible;
 }
+
 //@property IBOutlet NSView* view_outlet;
 -(void)regionIntersections;
 -(NSSet*)getTouches;
--(void)addRegion:(NSRect*)userRegion; //measured in floating point from 0.0 to 1.0
+-(void)addRegion:(NSRect)userRegion withName:(NSString*)region_name; //measured in floating point from 0.0 to 1.0. Made for single-device region system.
 
 
 @end
