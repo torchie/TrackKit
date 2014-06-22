@@ -26,7 +26,8 @@
     scene.scaleMode = SKSceneScaleModeAspectFit;
 
     [self.skView presentScene:scene];
-
+    //[self.skView addSubview:detector];
+    
     self.skView.showsFPS = YES;
     self.skView.showsNodeCount = YES;
 }

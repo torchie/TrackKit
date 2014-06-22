@@ -14,8 +14,6 @@
 
     self = [super initWithFrame:frame];
     if (self) {
-        [self setNeedsDisplay:YES];
-        [self setWantsLayer:YES];
         // Initialization code here.
         NSTrackingArea *trackingArea = [[NSTrackingArea alloc] initWithRect:[self visibleRect] options: NSTrackingMouseEnteredAndExited |NSTrackingInVisibleRect |NSTrackingActiveAlways owner:self userInfo:nil];
         [self addTrackingArea:trackingArea];
@@ -46,7 +44,7 @@
 
     [[NSColor blueColor] setFill];
     NSRectFill(dirtyRect);
-    NSLog(@"drawrect called");
+    //NSLog(@"drawrect called");
     NSRect r = NSMakeRect(10, 10, 10, 10);
     NSBezierPath *bp = [NSBezierPath bezierPathWithRect:r];
     NSColor *color = [NSColor whiteColor];
@@ -60,21 +58,20 @@
 }
 
 -(void)verbose {
-    NSLog(@"From the verbose log\n======");
+    //NSLog(@"From the verbose log\n======");
 
     [[NSColor whiteColor] setFill];
     if(visible) {
         //REMEMBER: fast enumeration over an nsdictionary requires accessing its allKeys.
         for(NSTouch* x in [touch_identities allValues]) {
-            NSLog(@"yoyoyoyoyoyo we're operating with %@ at ", x);
-            CGRect to_draw = CGRectMake(x.normalizedPosition.x*self.bounds.size.width, x.normalizedPosition.y*self.bounds.size.height, (x.normalizedPosition.x*self.bounds.size.width)+10.0f, (x.normalizedPosition.y*self.bounds.size.height)+10.0f);
-            NSLog(@"frame: %@", NSStringFromRect(self.frame));
+            //NSLog(@"yoyoyoyoyoyo we're operating with %@ at ", x);
+            CGRect to_draw = CGRectMake(x.normalizedPosition.x*self.bounds.size.width, x.normalizedPosition.y*self.bounds.size.height, self.bounds.size.width/32.0f, self.bounds.size.height/32.0f);
+            NSLog(@"DRAWPOINT: %@", NSStringFromRect(to_draw));
             NSBezierPath* square = [NSBezierPath bezierPath];
             [square appendBezierPathWithRect:to_draw];
             [[NSColor whiteColor] setFill];
             [[NSColor whiteColor] setStroke];
             [square stroke];
-
            // CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
         }
         
@@ -89,14 +86,14 @@
 }
 
 -(void)touchesMovedWithEvent:(NSEvent *)event {
-    NSLog(@"something else happened!");
-    NSLog(@"Touch detected %@", [event touchesMatchingPhase:NSTouchPhaseAny inView:self]);
+    //NSLog(@"something else happened!");
+    //NSLog(@"Touch detected %@", [event touchesMatchingPhase:NSTouchPhaseAny inView:self]);
     touch_identities = [[NSMutableDictionary alloc] init];
 
     for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseAny inView:self]) {
-        NSLog(@"touch identity %@", [touch identity]);
+       //NSLog(@"touch identity %@", [touch identity]);
         [touch_identities setObject:touch forKey:[touch identity]];
-        NSLog(@"all touches: %@", touch_identities);
+        //NSLog(@"all touches: %@", touch_identities);
     }
     //SUPER IMPORTANT THO
     [self setNeedsDisplay:YES];
