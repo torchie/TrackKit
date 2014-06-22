@@ -18,7 +18,7 @@
 {
     /* Pick a size for the scene */
     TKMyScene* scene = [TKMyScene sceneWithSize:CGSizeMake(1024, 768)];
-    TKDetectorView* detector = [[TKDetectorView alloc] initWithFrame:NSMakeRect(scene.position.x, scene.position.y, scene.size.width, scene.size.height)];
+    TKDetectorView* detector = [[TKDetectorView alloc] initWithFrame:NSMakeRect(0,0,1024,768)];
    // [detector addRegion:NSMakeRect(10, 10, 32, 32)];
     [scene setDetector:detector];
     

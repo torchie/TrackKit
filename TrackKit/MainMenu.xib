@@ -108,20 +108,14 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="745" height="868"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
-            <view key="contentView" id="EiT-Mj-1SZ">
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="745" height="868"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <customView id="Wjy-UC-qi6" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="745" height="868"/>
+                    <customView wantsLayer="YES" ambiguous="YES" id="Wjy-UC-qi6" customClass="SKView">
+                        <rect key="frame" x="5" y="0.0" width="745" height="868"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9DQ-vI-2sa" customClass="TKDetectorView">
-                                <rect key="frame" x="158" y="119" width="428" height="283"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </customView>
-                        </subviews>
                     </customView>
                 </subviews>
                 <constraints>
@@ -130,6 +124,22 @@
                     <constraint firstAttribute="top" secondItem="Wjy-UC-qi6" secondAttribute="top" id="FXR-1x-qCz"/>
                     <constraint firstAttribute="bottom" secondItem="Wjy-UC-qi6" secondAttribute="bottom" id="NC6-PR-1uG"/>
                 </constraints>
+            </view>
+        </window>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="0in-IJ-dP7">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="1549" y="132" width="561" height="558"/>
+            <rect key="screenRect" x="1440" y="0.0" width="1280" height="778"/>
+            <view key="contentView" wantsLayer="YES" id="1K5-b1-wmz">
+                <rect key="frame" x="0.0" y="0.0" width="561" height="558"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9DQ-vI-2sa" customClass="TKDetectorView">
+                        <rect key="frame" x="0.0" y="6" width="567" height="552"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
+                </subviews>
             </view>
         </window>
     </objects>

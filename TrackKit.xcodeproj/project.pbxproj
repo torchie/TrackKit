@@ -62,6 +62,7 @@
 		F6B52B1D19244A510001862A /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
 		F6B52B1F1924774C0001862A /* TKDetectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDetectorView.h; sourceTree = "<group>"; };
 		F6B52B201924774C0001862A /* TKDetectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDetectorView.m; sourceTree = "<group>"; };
+		F6BEB4E3195660ED003D14D0 /* TKDetectorView_regions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKDetectorView_regions.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +135,7 @@
 				F6B52AFB1923FA220001862A /* TKMyScene.h */,
 				F6B52B1F1924774C0001862A /* TKDetectorView.h */,
 				F6B52B201924774C0001862A /* TKDetectorView.m */,
+				F6BEB4E3195660ED003D14D0 /* TKDetectorView_regions.h */,
 				F6B52AFC1923FA220001862A /* TKAppDelegate.m */,
 				F6B52AFE1923FA220001862A /* TKAppDelegate.h */,
 				F6B52AFF1923FA220001862A /* Spaceship.png */,
@@ -484,6 +486,7 @@
 				F6B52B191923FA220001862A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F6B52B1A1923FA220001862A /* Build configuration list for PBXNativeTarget "TrackKitTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +495,7 @@
 				F6B52B1C1923FA220001862A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

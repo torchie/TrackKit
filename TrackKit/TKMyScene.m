@@ -53,11 +53,12 @@
 }
 
 -(void)update:(CFTimeInterval)currentTime {
+   
     //CGWarpMouseCursorPosition(CGPointMake((CGFloat)self.size.width/2, (CGFloat)self.size.height/2));
     /* Called before each frame is rendered */
     
-    [detector getTouches];
-    NSLog(@" touches %@", [detector getTouches]);
+    //[detector getTouches];
+    //NSLog(@" touches %@", [detector getTouches]);
 }
 
 @end
