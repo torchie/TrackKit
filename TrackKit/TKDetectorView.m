@@ -21,27 +21,29 @@
         visible = true;
 
         [self setNeedsDisplay:YES];
-        [super setNeedsDisplay:YES];
         [self setAcceptsTouchEvents:YES];
         [self setWantsRestingTouches:YES];
         [self becomeFirstResponder];
         
-        NSLog(@" frame: %@", NSStringFromRect(self.frame));
+        framerelative = self.frame.origin;//self.frame.origin; //[self convertPoint:self.frame.origin toView:self];
+        NSLog(@"TKDetectorView, frame rect: %@", NSStringFromRect(frame));
+        //CGWarpMouseCursorPosition(framerelative);
+        //NSLog(@"Mouse warP location%@", NSStringFromPoint([NSEvent mouseLocation]));
+
     }
     return self;
 }
-
 - (void)awakeFromNib {
-    NSLog(@"@im here");
-	NSTrackingArea *trackingArea = [[NSTrackingArea alloc] initWithRect:[self visibleRect] options:NSTrackingMouseEnteredAndExited | NSTrackingInVisibleRect |NSTrackingActiveAlways owner:self userInfo:nil];
-	
-	[self addTrackingArea:trackingArea];
+    //NSLog(@"@im here");
+	//NSTrackingArea *trackingArea = [[NSTrackingArea alloc] initWithRect:[self visibleRect] options:NSTrackingMouseEnteredAndExited | NSTrackingInVisibleRect |NSTrackingActiveAlways owner:self userInfo:nil];
+    //NSLog(@"warped");
+	//[self addTrackingArea:trackingArea];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     
     //NSBezierPath* temppath
-
+    //CGWarpMouseCursorPosition(framerelative);
     [[NSColor blueColor] setFill];
     NSRectFill(dirtyRect);
     //NSLog(@"drawrect called");
@@ -62,6 +64,7 @@
 
     [[NSColor whiteColor] setFill];
     if(visible) {
+        NSLog(@"origin as reported by TKDetectorView: %@", NSStringFromPoint(framerelative));
         //REMEMBER: fast enumeration over an nsdictionary requires accessing its allKeys.
         for(NSTouch* x in [touch_identities allValues]) {
             //NSLog(@"yoyoyoyoyoyo we're operating with %@ at ", x);

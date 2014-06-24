@@ -15,12 +15,13 @@
     IBOutlet NSView* view_outlet;
     BOOL visible;
     NSMutableDictionary* touch_identities;
+    CGPoint framerelative;
 }
 
 -(void)regionIntersections;
 -(NSSet*)getTouches;
 -(NSMutableDictionary*)touches;
 -(void)addRegion:(NSRect)userRegion withName:(NSString*)region_name;
-
+- (NSPoint)convertToScreenFromLocalPoint:(NSPoint)point relativeToView:(NSView *)view;
 
 @end
