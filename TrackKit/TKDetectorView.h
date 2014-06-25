@@ -8,20 +8,28 @@
 
 
 #import <Cocoa/Cocoa.h>
+@interface TKAction : NSObject {
+    NSString* name;
+    BOOL conditions;
+}
+-(BOOL) satisfied;
+-(NSString*)name;
+@end
 
 @interface TKDetectorView : NSView {
     NSSet* touches;
-    NSMutableDictionary* trackpad_regions;
     IBOutlet NSView* view_outlet;
     BOOL visible;
+    CGFloat point_size;
+    
+    NSString* all_actions;
+    NSMutableDictionary* trackpad_regions;
     NSMutableDictionary* touch_identities;
     CGPoint framerelative;
 }
 
--(void)regionIntersections;
 -(NSSet*)getTouches;
 -(NSMutableDictionary*)touches;
--(void)addRegion:(NSRect)userRegion withName:(NSString*)region_name;
-- (NSPoint)convertToScreenFromLocalPoint:(NSPoint)point relativeToView:(NSView *)view;
+//- (NSPoint)convertToScreenFromLocalPoint:(NSPoint)point relativeToView:(NSView *)view;
 
 @end

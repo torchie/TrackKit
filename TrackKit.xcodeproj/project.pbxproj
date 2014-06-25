@@ -24,6 +24,7 @@
 		F6B52B141923FA220001862A /* TrackKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B52B131923FA220001862A /* TrackKitTests.m */; };
 		F6B52B1E19244A510001862A /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = F6B52B1D19244A510001862A /* Circle.png */; };
 		F6B52B211924774C0001862A /* TKDetectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B52B201924774C0001862A /* TKDetectorView.m */; };
+		F6D0BF57195A8A26009814E7 /* TKDetectorView+regions.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D0BF56195A8A26009814E7 /* TKDetectorView+regions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +66,8 @@
 		F6B52B1D19244A510001862A /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
 		F6B52B1F1924774C0001862A /* TKDetectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDetectorView.h; sourceTree = "<group>"; };
 		F6B52B201924774C0001862A /* TKDetectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDetectorView.m; sourceTree = "<group>"; };
-		F6BEB4E3195660ED003D14D0 /* TKDetectorView_regions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKDetectorView_regions.h; sourceTree = "<group>"; };
+		F6D0BF55195A8A26009814E7 /* TKDetectorView+regions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TKDetectorView+regions.h"; sourceTree = "<group>"; };
+		F6D0BF56195A8A26009814E7 /* TKDetectorView+regions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TKDetectorView+regions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +140,8 @@
 				F6B52AFB1923FA220001862A /* TKMyScene.h */,
 				F6B52B1F1924774C0001862A /* TKDetectorView.h */,
 				F6B52B201924774C0001862A /* TKDetectorView.m */,
-				F6BEB4E3195660ED003D14D0 /* TKDetectorView_regions.h */,
+				F6D0BF55195A8A26009814E7 /* TKDetectorView+regions.h */,
+				F6D0BF56195A8A26009814E7 /* TKDetectorView+regions.m */,
 				F6B52AFC1923FA220001862A /* TKAppDelegate.m */,
 				F6B52AFE1923FA220001862A /* TKAppDelegate.h */,
 				F64F98D91958A59800AA5743 /* NSScreen+PointConversion.h */,
@@ -286,6 +289,7 @@
 				F64F98DB1958A59800AA5743 /* NSScreen+PointConversion.m in Sources */,
 				F6B52AFA1923FA220001862A /* TKMyScene.m in Sources */,
 				F6B52B211924774C0001862A /* TKDetectorView.m in Sources */,
+				F6D0BF57195A8A26009814E7 /* TKDetectorView+regions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

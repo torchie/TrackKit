@@ -9,6 +9,7 @@
 #import "TKMyScene.h"
 #import "TKDetectorView.h"
 #import "NSScreen+PointConversion.h"
+#import "TKDetectorView+regions.h"
 @implementation TKMyScene
 
 -(id)initWithSize:(CGSize)size {    
@@ -24,6 +25,7 @@
         myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
                                        CGRectGetMidY(self.frame));
         //[self.view addSubview:detector];
+
         [self addChild:myLabel];
        
     }
@@ -34,12 +36,13 @@
 -(void)setDetector:(TKDetectorView*)view {
     detector = view;
     [self.view addSubview:view];
+    [detector addRegion:CGRectMake(15, 15, 30, 30) withName:@"tester"];
 }
 
 
 -(void)mouseDown:(NSEvent *)theEvent {
     /* Called when a mouse click occurs */
-    NSLog(@"Click detected");
+    //NSLog(@"Click detected");
     CGPoint location = [theEvent locationInNode:self];
     
     SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
@@ -91,13 +94,13 @@
     
     //THE PROBLEM: IT'S EXPECTING COORDINATES FROM THE FRAMERECT SIZE IT WAS INITIALIZED WITH EVEN THOUGH SMALLER ????
     CGWarpMouseCursorPosition(framerelative);
-    NSLog(@"MyScene detector report of detector center: %@", NSStringFromPoint(CGPointMake( CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame))));
-    NSLog(@"MyScene converttoscreen center: %@", NSStringFromPoint(framerelative));
+    //NSLog(@"MyScene detector report of detector center: %@", NSStringFromPoint(CGPointMake( CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame))));
+    //NSLog(@"MyScene converttoscreen center: %@", NSStringFromPoint(framerelative));
     //CGWarpMouseCursorPosition(CGPointMake((CGFloat)self.size.width/2, (CGFloat)self.size.height/2));
     /* Called before each frame is rendered */
     
     //[detector getTouches];
-    //NSLog(@" touches %@", [detector getTouches]);
+    ////NSLog(@" touches %@", [detector getTouches]);
 }
 
 @end

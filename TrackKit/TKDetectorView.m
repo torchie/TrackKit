@@ -7,6 +7,7 @@
 //
 
 #import "TKDetectorView.h"
+#import "TKDetectorView+regions.h"
 
 @implementation TKDetectorView
 
@@ -18,8 +19,9 @@
         NSTrackingArea *trackingArea = [[NSTrackingArea alloc] initWithRect:[self visibleRect] options: NSTrackingMouseEnteredAndExited |NSTrackingInVisibleRect |NSTrackingActiveAlways owner:self userInfo:nil];
         [self addTrackingArea:trackingArea];
         touch_identities = [[NSMutableDictionary alloc] init];
+        trackpad_regions = [[NSMutableDictionary alloc] init];
         visible = true;
-
+        point_size = 32.0f;
         [self setNeedsDisplay:YES];
         [self setAcceptsTouchEvents:YES];
         [self setWantsRestingTouches:YES];
@@ -27,17 +29,12 @@
         
         framerelative = self.frame.origin;//self.frame.origin; //[self convertPoint:self.frame.origin toView:self];
         NSLog(@"TKDetectorView, frame rect: %@", NSStringFromRect(frame));
-        //CGWarpMouseCursorPosition(framerelative);
-        //NSLog(@"Mouse warP location%@", NSStringFromPoint([NSEvent mouseLocation]));
 
     }
     return self;
 }
 - (void)awakeFromNib {
-    //NSLog(@"@im here");
-	//NSTrackingArea *trackingArea = [[NSTrackingArea alloc] initWithRect:[self visibleRect] options:NSTrackingMouseEnteredAndExited | NSTrackingInVisibleRect |NSTrackingActiveAlways owner:self userInfo:nil];
-    //NSLog(@"warped");
-	//[self addTrackingArea:trackingArea];
+
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -54,22 +51,24 @@
     [bp stroke];
 
     [self verbose];
+    [self drawRegions];
     [super drawRect:dirtyRect];
 	//[NSBezierPath fillRect:self.frame];
     // Drawing code here.
 }
 
+
 -(void)verbose {
     //NSLog(@"From the verbose log\n======");
 
-    [[NSColor whiteColor] setFill];
+    //[[NSColor whiteColor] setFill];
     if(visible) {
         NSLog(@"origin as reported by TKDetectorView: %@", NSStringFromPoint(framerelative));
         //REMEMBER: fast enumeration over an nsdictionary requires accessing its allKeys.
         for(NSTouch* x in [touch_identities allValues]) {
             //NSLog(@"yoyoyoyoyoyo we're operating with %@ at ", x);
-            CGRect to_draw = CGRectMake(x.normalizedPosition.x*self.bounds.size.width, x.normalizedPosition.y*self.bounds.size.height, self.bounds.size.width/32.0f, self.bounds.size.height/32.0f);
-            NSLog(@"DRAWPOINT: %@", NSStringFromRect(to_draw));
+            CGRect to_draw = CGRectMake(x.normalizedPosition.x*self.bounds.size.width, x.normalizedPosition.y*self.bounds.size.height, self.bounds.size.width/point_size, self.bounds.size.height/point_size);
+//            NSLog(@"DRAWPOINT: %@", NSStringFromRect(to_draw));
             NSBezierPath* square = [NSBezierPath bezierPath];
             [square appendBezierPathWithRect:to_draw];
             [[NSColor whiteColor] setFill];
@@ -106,9 +105,5 @@
 -(NSSet*)getTouches {
    //NSLog(@"Gettouches: %@", touches);
     return touches;
-}
-
--(void)addRegion:(NSRect)userRegion {
-
 }
 @end
