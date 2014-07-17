@@ -16,16 +16,23 @@
 -(NSString*)name;
 @end
 
+
 @interface TKDetectorView : NSView {
-    NSSet* touches;
-    IBOutlet NSView* view_outlet;
     BOOL visible;
+    CGPoint framerelative;
     CGFloat point_size;
     
+    NSSet* touches;
+    IBOutlet NSView* view_outlet;
+    
+    NSFont* font;
     NSString* all_actions;
+    
+    NSDictionary* font_attributes;
     NSMutableDictionary* trackpad_regions;
     NSMutableDictionary* touch_identities;
-    CGPoint framerelative;
+    NSMutableDictionary* touch_positions;
+    NSMutableDictionary* touch_times;
 }
 
 -(NSSet*)getTouches;

@@ -36,7 +36,9 @@
 -(void)setDetector:(TKDetectorView*)view {
     detector = view;
     [self.view addSubview:view];
-    [detector addRegion:CGRectMake(15, 15, 30, 30) withName:@"tester"];
+    [detector addRegion:CGRectMake(0, 0, 128, 300) withName:@"lefthand"];
+    [detector addRegion:CGRectMake(128, 0, 128, 300) withName:@"righthand"];
+    
 }
 
 

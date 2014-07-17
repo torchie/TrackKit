@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F639DD3919625EDC00B7B97E /* NSTouch+physics.m in Sources */ = {isa = PBXBuildFile; fileRef = F639DD3819625EDC00B7B97E /* NSTouch+physics.m */; };
+		F639DD3E1964622D00B7B97E /* TKDetectorView+physics.m in Sources */ = {isa = PBXBuildFile; fileRef = F639DD3D1964622D00B7B97E /* TKDetectorView+physics.m */; };
 		F64F98DB1958A59800AA5743 /* NSScreen+PointConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = F64F98DA1958A59800AA5743 /* NSScreen+PointConversion.m */; };
 		F6B52AE41923FA210001862A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6B52AE31923FA210001862A /* Cocoa.framework */; };
 		F6B52AE61923FA210001862A /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6B52AE51923FA210001862A /* SpriteKit.framework */; };
@@ -38,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F639DD3719625EDC00B7B97E /* NSTouch+physics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTouch+physics.h"; sourceTree = "<group>"; };
+		F639DD3819625EDC00B7B97E /* NSTouch+physics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTouch+physics.m"; sourceTree = "<group>"; };
+		F639DD3C1964622D00B7B97E /* TKDetectorView+physics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TKDetectorView+physics.h"; sourceTree = "<group>"; };
+		F639DD3D1964622D00B7B97E /* TKDetectorView+physics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TKDetectorView+physics.m"; sourceTree = "<group>"; };
 		F64F98D91958A59800AA5743 /* NSScreen+PointConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScreen+PointConversion.h"; sourceTree = "<group>"; };
 		F64F98DA1958A59800AA5743 /* NSScreen+PointConversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScreen+PointConversion.m"; sourceTree = "<group>"; };
 		F6B52AE01923FA210001862A /* TrackKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +98,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F639DD3A19645D6B00B7B97E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		F6B52AD71923FA210001862A = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +153,11 @@
 				F6B52AFB1923FA220001862A /* TKMyScene.h */,
 				F6B52B1F1924774C0001862A /* TKDetectorView.h */,
 				F6B52B201924774C0001862A /* TKDetectorView.m */,
+				F639DD3C1964622D00B7B97E /* TKDetectorView+physics.h */,
+				F639DD3D1964622D00B7B97E /* TKDetectorView+physics.m */,
+				F639DD3719625EDC00B7B97E /* NSTouch+physics.h */,
+				F639DD3819625EDC00B7B97E /* NSTouch+physics.m */,
+				F639DD3A19645D6B00B7B97E /* New Group */,
 				F6D0BF55195A8A26009814E7 /* TKDetectorView+regions.h */,
 				F6D0BF56195A8A26009814E7 /* TKDetectorView+regions.m */,
 				F6B52AFC1923FA220001862A /* TKAppDelegate.m */,
@@ -285,9 +303,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6B52AF21923FA210001862A /* main.m in Sources */,
+				F639DD3919625EDC00B7B97E /* NSTouch+physics.m in Sources */,
 				F6B52AFD1923FA220001862A /* TKAppDelegate.m in Sources */,
 				F64F98DB1958A59800AA5743 /* NSScreen+PointConversion.m in Sources */,
 				F6B52AFA1923FA220001862A /* TKMyScene.m in Sources */,
+				F639DD3E1964622D00B7B97E /* TKDetectorView+physics.m in Sources */,
 				F6B52B211924774C0001862A /* TKDetectorView.m in Sources */,
 				F6D0BF57195A8A26009814E7 /* TKDetectorView+regions.m in Sources */,
 			);
