@@ -134,6 +134,7 @@
     //JUST TO TEST
     for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseAny inView:self]) {
         //NSLog(@"delta test: %.16f",[self deltaX:touch]);
+        [self velocity:touch];
     }
     
     

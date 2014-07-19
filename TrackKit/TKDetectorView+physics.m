@@ -8,6 +8,7 @@
 
 #import "TKDetectorView+physics.h"
 #include <mach/mach.h>
+#include <math.h>
 
 @implementation TKDetectorView (physics)
 -(void) phys_record {
@@ -22,8 +23,14 @@
         //if there is no touch position array for the touch , create one
         if(![touch_positions objectForKey:[x identity]]) {
             NSMutableArray* positions = [[NSMutableArray alloc] init];
+            NSMutableArray* times = [[NSMutableArray alloc] init];
+            
             [positions addObject:[NSValue valueWithPoint:x.normalizedPosition]];
+            [times addObject:[NSNumber numberWithDouble:CFAbsoluteTimeGetCurrent()]];
+            
             [touch_positions setObject:positions forKey:[x identity]];
+            [touch_times setObject:times forKey:[x identity]];
+ 
 //            NSLog(@"creating position array");
 //            NSLog(@"Touch %@'s position list: %@", x, [touch_positions objectForKey:[x identity]]);
         //if the position array already exists, add an object to it.
@@ -31,9 +38,12 @@
             NSMutableArray*  temp = [touch_positions objectForKey:[x identity]];
             NSMutableArray* times = [touch_times objectForKey:[x identity]];
             //NSLog(@"looking at positions array for object at %@", x);
+        
             [temp addObject:[NSValue valueWithPoint:x.normalizedPosition]];
-//            mach_absolute_time();
-            //NSLog(@"touch array on %@ since addition: %@", x, [temp description]);
+            [times addObject:[NSNumber numberWithDouble:CFAbsoluteTimeGetCurrent()]];
+//            NSLog(@"cfabsolute: %.20lf",CFAbsoluteTimeGetCurrent());
+//            NSLog(@"mach_absolute: %.20lf",mach_absolute_time());
+//            NSLog(@"times array on %@ since addition: %@", x, [times description]);
         }
         
     }
@@ -54,6 +64,7 @@
     }
     //NSLog(@"deltax array %@, x1 %.2f, x2 %.2f", array, point1.x, point2.x);
     return (point2.x-point1.x);
+    
     //return [touch_identities objectForKey:touch] objectAtIndex: [[touch_identities objectForKey:touch] length]
 }
 
@@ -74,6 +85,28 @@
     return (point2.y-point1.y);
 }
 
--(CGFloat)
+-(CGFloat)velocity:(NSTouch *)touch {
+    NSArray* positions = [touch_positions objectForKey:[touch identity]];
+    NSArray* times = [touch_times objectForKey:[touch identity]];
+    
+    //Magnitude calculated by scalar dot product
+    CGFloat magnitude = sqrt(pow([self deltaX:touch],2) + pow([self deltaY:touch],2));
+    CGFloat time1 = 0.0;
+    CGFloat time2 = 0.0;
+    //Time delta
+    NSLog([times description]);
+    if([times count] > 1) {
+
+        time1 = [[times objectAtIndex:0]   doubleValue];
+        time2 = [[times objectAtIndex:[times count]-1] doubleValue];
+    }
+    CGFloat timedelta = time2-time1;
+    NSLog(@"deltax %.10lf, deltay %.10lf, times count, %ld time1: %.20f, time2, %.20f, magnitude: %.20f, time delta: %.200f, vel. %.20f", [self deltaX:touch], [self deltaY:touch], [times count], time1, time2, magnitude, timedelta, magnitude/timedelta);
+    //Note (jul 19): timedelta is an EXTREMELY precise value
+    return magnitude/timedelta;
+    
+}
+
+
 
 @end

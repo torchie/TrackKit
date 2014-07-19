@@ -17,4 +17,6 @@
 -(CGFloat)deltaX:(NSTouch*)touch;
 -(CGFloat)deltaY:(NSTouch*)touch;
 -(CGFloat)instantaneousVelocity:(NSTouch*)touch;
+
+-(CGFloat)realWorldSize:(CGFloat)value ofTouch:(NSTouch*)touch;
 @end
