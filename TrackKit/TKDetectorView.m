@@ -33,7 +33,7 @@
         visible = true;
         trackpad_regions = [[NSMutableDictionary alloc] init];
         framerelative = self.frame.origin;
-        font = [NSFont fontWithName:@"Avenir" size:14.0];
+        font = [NSFont fontWithName:@"Avenir" size:6.0];
 
         font_attributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, [NSNumber numberWithFloat:1.0], NSBaselineOffsetAttributeName, nil, NSForegroundColorAttributeName, [NSColor whiteColor]];
 
@@ -85,9 +85,12 @@
             [[NSColor blackColor] setStroke];
             [square stroke];
 
-
-            
-            [[NSString stringWithFormat:@"%lu", [[touch_identities allValues] indexOfObject:x]] drawInRect:to_draw withAttributes:font_attributes];
+            [[NSString stringWithFormat:@"# = %lu\n dir = %.2lfº\n avg vel = %.2lf mm/s^2\n, inst. vel = %.2lf mm/s^2",
+              [[touch_identities allValues] indexOfObject:x],
+              [self direction:x],
+              [self velocity:x],
+             [self instantaneousVelocity:x]]
+             drawInRect:to_draw withAttributes:font_attributes];
         }
         
     }
