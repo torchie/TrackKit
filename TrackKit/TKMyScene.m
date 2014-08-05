@@ -27,7 +27,6 @@
         //[self.view addSubview:detector];
 
         [self addChild:myLabel];
-       
     }
     return self;
 }
@@ -36,8 +35,8 @@
 -(void)setDetector:(TKDetectorView*)view {
     detector = view;
     [self.view addSubview:view];
-    [detector addRegion:CGRectMake(0, 0, 128, 300) withName:@"lefthand"];
-    [detector addRegion:CGRectMake(128, 0, 128, 300) withName:@"righthand"];
+    [detector addRegion:CGRectMake(0, 0, detector.frame.size.width/3, detector.frame.size.height) withName:@"lefthand"];
+    [detector addRegion:CGRectMake(detector.frame.size.width*(2/3), 0, 128, 300) withName:@"righthand"];
     
 }
 
@@ -46,7 +45,6 @@
     /* Called when a mouse click occurs */
     //NSLog(@"Click detected");
     CGPoint location = [theEvent locationInNode:self];
-    
     SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
     
     sprite.position = location;
@@ -71,7 +69,6 @@
         
 		return flippedScreenPoint;
 	}
-    
 	return NSZeroPoint;
 }
 

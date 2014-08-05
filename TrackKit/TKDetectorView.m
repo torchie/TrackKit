@@ -18,13 +18,9 @@
 
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code here.
-        
-        
         NSTrackingArea *trackingArea = [[NSTrackingArea alloc] initWithRect:[self visibleRect] options: NSTrackingMouseEnteredAndExited |NSTrackingInVisibleRect |NSTrackingActiveAlways owner:self userInfo:nil];
        
         [self addTrackingArea:trackingArea];
-       
         [self setNeedsDisplay:YES];
         [self setAcceptsTouchEvents:YES];
         [self setWantsRestingTouches:YES];
@@ -34,7 +30,6 @@
         trackpad_regions = [[NSMutableDictionary alloc] init];
         framerelative = self.frame.origin;
         font = [NSFont fontWithName:@"Avenir" size:6.0];
-
         font_attributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, [NSNumber numberWithFloat:1.0], NSBaselineOffsetAttributeName, nil, NSForegroundColorAttributeName, [NSColor whiteColor]];
 
         NSLog(@"TKDetectorView, frame rect: %@", NSStringFromRect(frame));
@@ -69,16 +64,12 @@
 
 
 -(void)verbose {
-    //NSLog(@"From the verbose log\n======");
-
-    //[[NSColor whiteColor] setFill];
     if(visible) {
-//        NSLog(@"origin as reported by TKDetectorView: %@", NSStringFromPoint(framerelative));
-        //REMEMBER: fast enumeration over an nsdictionary requires accessing its allKeys.
+        //REMEMBER: fast enumeration over contents of an nsdictionary requires accessing its allKeys.
         for(NSTouch* x in [touch_identities allValues]) {
             //NSLog(@"yoyoyoyoyoyo we're operating with %@ at ", x);
             CGRect to_draw = CGRectMake(x.normalizedPosition.x*self.bounds.size.width, x.normalizedPosition.y*self.bounds.size.height, point_size, point_size);
-//            NSLog(@"DRAWPOINT: %@", NSStringFromRect(to_draw));
+            //NSLog(@"DRAWPOINT: %@", NSStringFromRect(to_draw));
             NSBezierPath* square = [NSBezierPath bezierPath];
             [square appendBezierPathWithRect:to_draw];
             [[NSColor whiteColor] setFill];
@@ -92,7 +83,6 @@
              [self instantaneousVelocity:x]]
              drawInRect:to_draw withAttributes:font_attributes];
         }
-        
     }
     [self setNeedsDisplay:YES];
     [super setNeedsDisplay:YES];
@@ -111,12 +101,10 @@
     for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseAny inView:self]) {
         //NSLog(@"touch identity%@", [touch identity]);
         //[touch phys_record];
-
         [touch_identities setObject:touch forKey:[touch identity]];
         //NSLog(@"all touches: %@", touch_identities);
     }
     [self phys_record];
-
     [self setNeedsDisplay:YES];
     [super setNeedsDisplay:YES];
 }
@@ -139,8 +127,6 @@
         //NSLog(@"delta test: %.16f",[self deltaX:touch]);
         [self velocity:touch];
     }
-    
-    
     [self setNeedsDisplay:YES];
     [super setNeedsDisplay:YES];
 }
