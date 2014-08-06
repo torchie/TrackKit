@@ -25,11 +25,11 @@
         [self setAcceptsTouchEvents:YES];
         [self setWantsRestingTouches:YES];
         [self becomeFirstResponder];
-        point_size = 64.0f;
+        point_size = self.frame.size.height/6;
         visible = true;
         trackpad_regions = [[NSMutableDictionary alloc] init];
         framerelative = self.frame.origin;
-        font = [NSFont fontWithName:@"Avenir" size:6.0];
+        font = [NSFont fontWithName:@"Avenir Heavy" size:point_size/10];
         font_attributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, [NSNumber numberWithFloat:1.0], NSBaselineOffsetAttributeName, nil, NSForegroundColorAttributeName, [NSColor whiteColor]];
 
         NSLog(@"TKDetectorView, frame rect: %@", NSStringFromRect(frame));
@@ -76,7 +76,7 @@
             [[NSColor blackColor] setStroke];
             [square stroke];
 
-            [[NSString stringWithFormat:@"# = %lu\n dir = %.2lfº\n avg vel = %.2lf mm/s^2\n, inst. vel = %.2lf mm/s^2",
+            [[NSString stringWithFormat:@"# = %lu\n dir = %.2lfº\n avg vel = %.2lf mm/s\n, inst. vel = %.2lf mm/s",
               [[touch_identities allValues] indexOfObject:x],
               [self direction:x],
               [self velocity:x],
