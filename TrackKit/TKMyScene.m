@@ -57,25 +57,13 @@
     [self addChild:sprite];
 }
 
-//(C) Nial Giacomelli
-- (NSPoint)convertToScreenFromLocalPoint:(NSPoint)point relativeToView:(NSView *)view {
-	NSScreen *currentScreen = [NSScreen currentScreenForMouseLocation];
-	if(currentScreen)
-	{
-		NSPoint windowPoint = [view convertPoint:point toView:nil];
-		NSPoint screenPoint = [[view window] convertBaseToScreen:windowPoint];
-		NSPoint flippedScreenPoint = [currentScreen flipPoint:screenPoint];
-		flippedScreenPoint.y += [currentScreen frame].origin.y;
-        
-		return flippedScreenPoint;
-	}
-	return NSZeroPoint;
-}
-
 -(void)update:(CFTimeInterval)currentTime {
     //NOTE: ORIGINS ARE CONSIDERED BOTTOM LEFT CORNER IN OSX UI, NOT CENTER.
-    CGPoint framerelative = [self convertToScreenFromLocalPoint:CGPointMake(CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame)) relativeToView:self.view]; //THIS IS IT
     
+    
+    
+    //CGPoint framerelative = [self convertToScreenFromLocalPoint:CGPointMake(CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame)) relativeToView:self.view]; //THIS IS IT
+        CGPoint framerelative = [detector convertToScreenFromLocalPoint:CGPointMake(CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame)) relativeToView:self.view];
     //CGPointMake(detector.frame.origin.x, detector.frame.origin.y);
     
     //CGPointMake(CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame)); //THIS IS THE REAL NSVIEW CENTER

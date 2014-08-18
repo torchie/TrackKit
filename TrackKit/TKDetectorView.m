@@ -11,7 +11,7 @@
 #import "TKDetectorView+physics.h"
 #import "NSTouch+physics.h"
 #import <Foundation/Foundation.h>
-
+#import "NSScreen+PointConversion.h"
 @implementation TKDetectorView
 
 - (id)initWithFrame:(NSRect)frame {
@@ -122,7 +122,7 @@
     //SUPER IMPORTANT THO
     [self phys_record];
     
-    //JUST TO TEST
+    //JUST TO TEST  
     for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseAny inView:self]) {
         //NSLog(@"delta test: %.16f",[self deltaX:touch]);
         [self velocity:touch];
@@ -134,5 +134,21 @@
 -(NSSet*)getTouches {
    //NSLog(@"Gettouches: %@", touches);
     return touches;
+}
+
+//(C) Nial Giacomelli
+- (NSPoint)convertToScreenFromLocalPoint:(NSPoint)point relativeToView:(NSView *)view {
+
+	NSScreen *currentScreen = [NSScreen currentScreenForMouseLocation];
+	if(currentScreen)
+	{
+		NSPoint windowPoint = [view convertPoint:point toView:nil];
+		NSPoint screenPoint = [[view window] convertBaseToScreen:windowPoint];
+		NSPoint flippedScreenPoint = [currentScreen flipPoint:screenPoint];
+		flippedScreenPoint.y += [currentScreen frame].origin.y;
+        
+		return flippedScreenPoint;
+	}
+	return NSZeroPoint;
 }
 @end

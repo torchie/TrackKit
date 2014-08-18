@@ -37,6 +37,6 @@
 
 -(NSSet*)getTouches;
 -(NSMutableDictionary*)touches;
-//- (NSPoint)convertToScreenFromLocalPoint:(NSPoint)point relativeToView:(NSView *)view;
+-(NSPoint)convertToScreenFromLocalPoint:(NSPoint)point relativeToView:(NSView *)view;
 
 @end
