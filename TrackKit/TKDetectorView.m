@@ -12,6 +12,7 @@
 #import "NSTouch+physics.h"
 #import <Foundation/Foundation.h>
 #import "NSScreen+PointConversion.h"
+
 @implementation TKDetectorView
 
 - (id)initWithFrame:(NSRect)frame {
@@ -47,6 +48,8 @@
     //CGWarpMouseCursorPosition(framerelative);
     [[NSColor whiteColor] setFill];
     NSRectFill(dirtyRect);
+    CGPoint framerelative = [self convertToScreenFromLocalPoint:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)) relativeToView:self];
+    CGWarpMouseCursorPosition(framerelative);
     //NSLog(@"drawrect called");
     NSRect r = NSMakeRect(10, 10, 10, 10);
     NSBezierPath *bp = [NSBezierPath bezierPathWithRect:r];

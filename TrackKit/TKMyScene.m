@@ -63,7 +63,7 @@
     
     
     //CGPoint framerelative = [self convertToScreenFromLocalPoint:CGPointMake(CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame)) relativeToView:self.view]; //THIS IS IT
-        CGPoint framerelative = [detector convertToScreenFromLocalPoint:CGPointMake(CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame)) relativeToView:self.view];
+        //CGPoint framerelative = [detector convertToScreenFromLocalPoint:CGPointMake(CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame)) relativeToView:self.view];
     //CGPointMake(detector.frame.origin.x, detector.frame.origin.y);
     
     //CGPointMake(CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame)); //THIS IS THE REAL NSVIEW CENTER
@@ -80,7 +80,7 @@
     //[detector convertPoint:detector.bounds.origin toView:nil];
     
     //THE PROBLEM: IT'S EXPECTING COORDINATES FROM THE FRAMERECT SIZE IT WAS INITIALIZED WITH EVEN THOUGH SMALLER ????
-    CGWarpMouseCursorPosition(framerelative);
+    //CGWarpMouseCursorPosition(framerelative);
     //NSLog(@"MyScene detector report of detector center: %@", NSStringFromPoint(CGPointMake( CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame))));
     //NSLog(@"MyScene converttoscreen center: %@", NSStringFromPoint(framerelative));
     //CGWarpMouseCursorPosition(CGPointMake((CGFloat)self.size.width/2, (CGFloat)self.size.height/2));
