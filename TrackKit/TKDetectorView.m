@@ -16,11 +16,11 @@
 @implementation TKDetectorView
 
 - (id)initWithFrame:(NSRect)frame {
-
+    
     self = [super initWithFrame:frame];
     if (self) {
         NSTrackingArea *trackingArea = [[NSTrackingArea alloc] initWithRect:[self visibleRect] options: NSTrackingMouseEnteredAndExited |NSTrackingInVisibleRect |NSTrackingActiveAlways owner:self userInfo:nil];
-       
+        
         [self addTrackingArea:trackingArea];
         [self setNeedsDisplay:YES];
         [self setAcceptsTouchEvents:YES];
@@ -32,35 +32,42 @@
         framerelative = self.frame.origin;
         font = [NSFont fontWithName:@"Avenir Heavy" size:point_size/10];
         font_attributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, [NSNumber numberWithFloat:1.0], NSBaselineOffsetAttributeName, nil, NSForegroundColorAttributeName, [NSColor whiteColor]];
-
+        
         NSLog(@"TKDetectorView, frame rect: %@", NSStringFromRect(frame));
-
+        
     }
     return self;
 }
 - (void)awakeFromNib {
-
+    
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     
     //NSBezierPath* temppath
     //CGWarpMouseCursorPosition(framerelative);
+    CGPoint framerelative = [self convertToScreenFromLocalPoint:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)) relativeToView:self.superview];
+    CGWarpMouseCursorPosition(framerelative);
+    
+    
     [[NSColor whiteColor] setFill];
     NSRectFill(dirtyRect);
-    CGPoint framerelative = [self convertToScreenFromLocalPoint:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)) relativeToView:self];
-    CGWarpMouseCursorPosition(framerelative);
+    
+    
+    
+    
     //NSLog(@"drawrect called");
     NSRect r = NSMakeRect(10, 10, 10, 10);
     NSBezierPath *bp = [NSBezierPath bezierPathWithRect:r];
     NSColor *color = [NSColor whiteColor];
     [color set];
     [bp stroke];
-
+    
     [self verbose];
     [self drawRegions];
     [self regionIntersections];
     [super drawRect:dirtyRect];
+    
 	//[NSBezierPath fillRect:self.frame];
     // Drawing code here.
 }
@@ -78,12 +85,12 @@
             [[NSColor whiteColor] setFill];
             [[NSColor blackColor] setStroke];
             [square stroke];
-
+            
             [[NSString stringWithFormat:@"# = %lu\n dir = %.2lfº\n avg vel = %.2lf mm/s\n, inst. vel = %.2lf mm/s",
               [[touch_identities allValues] indexOfObject:x],
               [self direction:x],
               [self velocity:x],
-             [self instantaneousVelocity:x]]
+              [self instantaneousVelocity:x]]
              drawInRect:to_draw withAttributes:font_attributes];
         }
     }
@@ -109,39 +116,36 @@
     }
     [self phys_record];
     [self setNeedsDisplay:YES];
-    [super setNeedsDisplay:YES];
+    //[super setNeedsDisplay:YES];
 }
 
 -(void)touchesMovedWithEvent:(NSEvent *)event {
     //NSLog(@"something else happened!");
     //NSLog(@"Touch detected %@", [event touchesMatchingPhase:NSTouchPhaseAny inView:self]);
     //touch_identities = [[NSMutableDictionary alloc] init];
-
+    
     for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseAny inView:self]) {
-       //NSLog(@"touch identity %@", [touch identity]);
+        //NSLog(@"touch identity %@", [touch identity]);
         [touch_identities setObject:touch forKey:[touch identity]];
         //NSLog(@"all touches: %@", touch_identities);
     }
     //SUPER IMPORTANT THO
     [self phys_record];
     
-    //JUST TO TEST  
-    for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseAny inView:self]) {
-        //NSLog(@"delta test: %.16f",[self deltaX:touch]);
-        [self velocity:touch];
-    }
+    //[super setNeedsDisplay:YES];
+    //[self.superview setNeedsDisplay:YES];
     [self setNeedsDisplay:YES];
-    [super setNeedsDisplay:YES];
+    
 }
 
 -(NSSet*)getTouches {
-   //NSLog(@"Gettouches: %@", touches);
+    //NSLog(@"Gettouches: %@", touches);
     return touches;
 }
 
 //(C) Nial Giacomelli
 - (NSPoint)convertToScreenFromLocalPoint:(NSPoint)point relativeToView:(NSView *)view {
-
+    
 	NSScreen *currentScreen = [NSScreen currentScreenForMouseLocation];
 	if(currentScreen)
 	{
