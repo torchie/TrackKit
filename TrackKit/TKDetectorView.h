@@ -19,9 +19,9 @@
 
 @interface TKDetectorView : NSView {
     BOOL visible;
-    CGPoint framerelative;
+    //CGPoint framerelative;
     CGFloat point_size;
-    
+    NSUInteger num_of_drawrects;
     NSSet* touches;
     IBOutlet NSView* view_outlet;
     

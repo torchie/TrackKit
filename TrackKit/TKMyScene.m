@@ -61,7 +61,7 @@
     //NOTE: ORIGINS ARE CONSIDERED BOTTOM LEFT CORNER IN OSX UI, NOT CENTER.
     
     
-    
+    [detector setNeedsDisplay:YES];
     //CGPoint framerelative = [self convertToScreenFromLocalPoint:CGPointMake(CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame)) relativeToView:self.view]; //THIS IS IT
         //CGPoint framerelative = [detector convertToScreenFromLocalPoint:CGPointMake(CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame)) relativeToView:self.view];
     //CGPointMake(detector.frame.origin.x, detector.frame.origin.y);

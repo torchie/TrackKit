@@ -48,6 +48,7 @@
         }
         
     }
+    touch_positions;
 }
 
 -(CGFloat)deltaX:(NSTouch *)touch {

@@ -29,11 +29,12 @@
         point_size = self.frame.size.height/6;
         visible = true;
         trackpad_regions = [[NSMutableDictionary alloc] init];
-        framerelative = self.frame.origin;
+        //framerelative = self.frame.origin;
         font = [NSFont fontWithName:@"Avenir Heavy" size:point_size/10];
         font_attributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, [NSNumber numberWithFloat:1.0], NSBaselineOffsetAttributeName, nil, NSForegroundColorAttributeName, [NSColor whiteColor]];
         
         NSLog(@"TKDetectorView, frame rect: %@", NSStringFromRect(frame));
+        num_of_drawrects = 0;
         
     }
     return self;
@@ -94,8 +95,8 @@
              drawInRect:to_draw withAttributes:font_attributes];
         }
     }
-    [self setNeedsDisplay:YES];
-    [super setNeedsDisplay:YES];
+    //[self setNeedsDisplay:YES];
+    //[super setNeedsDisplay:YES];
 }
 
 
@@ -115,28 +116,36 @@
         //NSLog(@"all touches: %@", touch_identities);
     }
     [self phys_record];
-    [self setNeedsDisplay:YES];
-    //[super setNeedsDisplay:YES];
+    if(![self needsDisplay]) {
+        [self setNeedsDisplay:YES];
+    }
 }
 
 -(void)touchesMovedWithEvent:(NSEvent *)event {
+    //Extremely slim possibility: Spacehip stopper bug is caused by the built-in trackpad having a much higher polling rate and lower latency than the magic trackpad, leading to the framerate drop seen on the magic trackpad happening so frequently on the built-in that it stops the entire game.
+    //So here's what we're gonna do: to track this, we'll see the difference in touch positions list size over the same time period between the magic trackpad and built-in
     //NSLog(@"something else happened!");
     //NSLog(@"Touch detected %@", [event touchesMatchingPhase:NSTouchPhaseAny inView:self]);
     //touch_identities = [[NSMutableDictionary alloc] init];
     
-    for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseAny inView:self]) {
+   for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseAny inView:self]) {
         //NSLog(@"touch identity %@", [touch identity]);
         [touch_identities setObject:touch forKey:[touch identity]];
         //NSLog(@"all touches: %@", touch_identities);
     }
     //SUPER IMPORTANT THO
     [self phys_record];
-    
+   
+   
     //[super setNeedsDisplay:YES];
     //[self.superview setNeedsDisplay:YES];
-    [self setNeedsDisplay:YES];
+    if(![self needsDisplay]) {
+        
+        //[[self superview] setNeedsDisplay:YES];
+    }
     
 }
+
 
 -(NSSet*)getTouches {
     //NSLog(@"Gettouches: %@", touches);
