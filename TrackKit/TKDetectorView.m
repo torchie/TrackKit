@@ -20,44 +20,30 @@
     self = [super initWithFrame:frame];
     if (self) {
         NSTrackingArea *trackingArea = [[NSTrackingArea alloc] initWithRect:[self visibleRect] options: NSTrackingMouseEnteredAndExited |NSTrackingInVisibleRect |NSTrackingActiveAlways owner:self userInfo:nil];
+        font_attributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, [NSNumber numberWithFloat:1.0], NSBaselineOffsetAttributeName, nil, NSForegroundColorAttributeName, [NSColor whiteColor]];        point_size = self.frame.size.height/6;
+        visible = true;
+        trackpad_regions = [[NSMutableDictionary alloc] init];
+        font = [NSFont fontWithName:@"Avenir Heavy" size:point_size/10];
+
         
         [self addTrackingArea:trackingArea];
         [self setNeedsDisplay:YES];
         [self setAcceptsTouchEvents:YES];
         [self setWantsRestingTouches:YES];
         [self becomeFirstResponder];
-        point_size = self.frame.size.height/6;
-        visible = true;
-        trackpad_regions = [[NSMutableDictionary alloc] init];
-        //framerelative = self.frame.origin;
-        font = [NSFont fontWithName:@"Avenir Heavy" size:point_size/10];
-        font_attributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, [NSNumber numberWithFloat:1.0], NSBaselineOffsetAttributeName, nil, NSForegroundColorAttributeName, [NSColor whiteColor]];
-        
-        NSLog(@"TKDetectorView, frame rect: %@", NSStringFromRect(frame));
-        num_of_drawrects = 0;
         
     }
     return self;
 }
-- (void)awakeFromNib {
-    
-}
 
 - (void)drawRect:(NSRect)dirtyRect {
     
-    //NSBezierPath* temppath
-    //CGWarpMouseCursorPosition(framerelative);
     CGPoint framerelative = [self convertToScreenFromLocalPoint:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)) relativeToView:self.superview];
     CGWarpMouseCursorPosition(framerelative);
-    
     
     [[NSColor whiteColor] setFill];
     NSRectFill(dirtyRect);
     
-    
-    
-    
-    //NSLog(@"drawrect called");
     NSRect r = NSMakeRect(10, 10, 10, 10);
     NSBezierPath *bp = [NSBezierPath bezierPathWithRect:r];
     NSColor *color = [NSColor whiteColor];
@@ -68,19 +54,16 @@
     [self drawRegions];
     [self regionIntersections];
     [super drawRect:dirtyRect];
-    
-	//[NSBezierPath fillRect:self.frame];
-    // Drawing code here.
 }
 
-
+//verbose mode draws the touch points in the TKDetectorView.
 -(void)verbose {
+    
     if(visible) {
-        //REMEMBER: fast enumeration over contents of an nsdictionary requires accessing its allKeys.
+        //Fast enumeration over contents of an nsdictionary requires accessing its allKeys.
         for(NSTouch* x in [touch_identities allValues]) {
-            //NSLog(@"yoyoyoyoyoyo we're operating with %@ at ", x);
+           
             CGRect to_draw = CGRectMake(x.normalizedPosition.x*self.bounds.size.width, x.normalizedPosition.y*self.bounds.size.height, point_size, point_size);
-            //NSLog(@"DRAWPOINT: %@", NSStringFromRect(to_draw));
             NSBezierPath* square = [NSBezierPath bezierPath];
             [square appendBezierPathWithRect:to_draw];
             [[NSColor whiteColor] setFill];
@@ -95,60 +78,28 @@
              drawInRect:to_draw withAttributes:font_attributes];
         }
     }
-    //[self setNeedsDisplay:YES];
-    //[super setNeedsDisplay:YES];
-}
-
-
--(void)mouseEntered:(NSEvent *)theEvent {
-    NSLog(@"Hello!");
 }
 
 //We need a touchesBegan event for taps.
 -(void)touchesBeganWithEvent:(NSEvent *)event {
-    touch_identities = [[NSMutableDictionary alloc] init];
-    //NSLog(@"test");
     
+    touch_identities = [[NSMutableDictionary alloc] init];
     for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseAny inView:self]) {
-        //NSLog(@"touch identity%@", [touch identity]);
-        //[touch phys_record];
         [touch_identities setObject:touch forKey:[touch identity]];
-        //NSLog(@"all touches: %@", touch_identities);
     }
     [self phys_record];
-    if(![self needsDisplay]) {
-        [self setNeedsDisplay:YES];
-    }
 }
 
 -(void)touchesMovedWithEvent:(NSEvent *)event {
-    //Extremely slim possibility: Spacehip stopper bug is caused by the built-in trackpad having a much higher polling rate and lower latency than the magic trackpad, leading to the framerate drop seen on the magic trackpad happening so frequently on the built-in that it stops the entire game.
-    //So here's what we're gonna do: to track this, we'll see the difference in touch positions list size over the same time period between the magic trackpad and built-in
-    //NSLog(@"something else happened!");
-    //NSLog(@"Touch detected %@", [event touchesMatchingPhase:NSTouchPhaseAny inView:self]);
-    //touch_identities = [[NSMutableDictionary alloc] init];
     
    for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseAny inView:self]) {
-        //NSLog(@"touch identity %@", [touch identity]);
         [touch_identities setObject:touch forKey:[touch identity]];
-        //NSLog(@"all touches: %@", touch_identities);
     }
-    //SUPER IMPORTANT THO
     [self phys_record];
-   
-   
-    //[super setNeedsDisplay:YES];
-    //[self.superview setNeedsDisplay:YES];
-    if(![self needsDisplay]) {
-        
-        //[[self superview] setNeedsDisplay:YES];
-    }
-    
 }
 
 
 -(NSSet*)getTouches {
-    //NSLog(@"Gettouches: %@", touches);
     return touches;
 }
 
@@ -165,6 +116,7 @@
         
 		return flippedScreenPoint;
 	}
+    
 	return NSZeroPoint;
 }
 @end

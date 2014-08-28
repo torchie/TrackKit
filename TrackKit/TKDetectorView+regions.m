@@ -14,8 +14,8 @@
     NSLog(@"Regions added: %@", NSStringFromRect([[trackpad_regions valueForKey:region_name] rectValue]));
     NSLog(@"all regions: %@", trackpad_regions);
 }
--(void)drawRegions {
 
+-(void)drawRegions {
     for(NSValue* x in [trackpad_regions allValues]) {
 //        NSLog(@"printing regions: %@", NSStringFromRect([x rectValue]));
         
@@ -31,7 +31,6 @@
     for(NSValue* y in [trackpad_regions allValues]) {
 //        if(CGRectIntersectsRect(<#CGRect rect1#>, <#CGRect rect2#>))
         for(NSTouch* x in [touch_identities allValues]) {
-            //NSLog(@"yoyoyoyoyoyo we're operating with %@ ", x);
             CGRect testagainst = CGRectMake(x.normalizedPosition.x*self.bounds.size.width, x.normalizedPosition.y*self.bounds.size.height, point_size, point_size);
             
             if(CGRectIntersectsRect(testagainst, [y rectValue])) {

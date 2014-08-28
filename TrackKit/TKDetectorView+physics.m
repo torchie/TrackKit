@@ -32,19 +32,13 @@
             [touch_positions setObject:positions forKey:[x identity]];
             [touch_times setObject:times forKey:[x identity]];
  
-//            NSLog(@"creating position array");
-//            NSLog(@"Touch %@'s position list: %@", x, [touch_positions objectForKey:[x identity]]);
         //if the position array already exists, add an object to it.
         } else {
             NSMutableArray*  temp = [touch_positions objectForKey:[x identity]];
             NSMutableArray* times = [touch_times objectForKey:[x identity]];
-            //NSLog(@"looking at positions array for object at %@", x);
         
             [temp addObject:[NSValue valueWithPoint:x.normalizedPosition]];
             [times addObject:[NSNumber numberWithDouble:CACurrentMediaTime()]];
-            //NSLog(@"cfabsolute: %.20lf",CFAbsoluteTimeGetCurrent());
-            //NSLog(@"mach_absolute: %.20lf",CACurrentMediaTime())
-            //NSLog(@"times array on %@ since addition: %@", x, [times description]);
         }
         
     }
@@ -64,7 +58,6 @@
             point2 = [self realWorldPoint:[[array objectAtIndex:[array count]-1] pointValue] ofTouch:touch];
         }
     }
-    //NSLog(@"deltaX, x1 %.2f, x2 %.2f",point1.x, point2.x);
     return (point2.x-point1.x);
 }
 
@@ -81,7 +74,6 @@
             point2 = [self realWorldPoint:[[array objectAtIndex:[array count]-1] pointValue] ofTouch:touch];
         }
     }
-    //NSLog(@"deltaY y1 %.2f, y2 %.2f", point1.y, point2.y);
     return (point2.y-point1.y);
 }
 
@@ -97,19 +89,13 @@
     CGFloat magnitude = sqrt(pow([self deltaX:touch],2) + pow([self deltaY:touch],2));
     CGFloat time1 = 0.0;
     CGFloat time2 = 0.0;
+    
     //Time delta
-
     if([times count] > 1) {
-
         time1 = [[times objectAtIndex:0]   doubleValue];
         time2 = [[times objectAtIndex:[times count]-1] doubleValue];
     }
     CGFloat timedelta = time2-time1;
-    //NSLog(@"deltax %.10lf, deltay %.10lf, times count, %ld time1: %.20f, time2, %.20f, magnitude: %.20f, time delta: %.200f, vel. %.20f", [self deltaX:touch], [self deltaY:touch], [times count], time1, time2, magnitude, timedelta, magnitude/timedelta);
-    //NSLog(@"time2: %.3f, time1: %.3f, timedelta: %.3f",time2, time1,  timedelta);
-    //NSLog(@"heres a realworld X : %.20f", [self realWorldX:touch]);
-    //NSLog(@"heres a direction: %.20f", [self direction:touch]);
-    //NSLog(@"heres an inst vel: %.20f", [self instantaneousVelocity:touch]);
     return magnitude/timedelta;
 
 }
@@ -137,18 +123,16 @@
 
 -(CGFloat)realWorldY:(NSTouch *)touch {
     NSSize check = [touch deviceSize];
-    return (((check.height * [touch normalizedPosition].y)/72)*25.4);
+    return (((check.height * [touch normalizedPosition].y)/72)*25.4;
 }
 
 -(CGPoint)realWorldPoint:(CGPoint)value ofTouch:(NSTouch *)touch {
+    
     NSSize check = [touch deviceSize];
     CGPoint realsize;
     realsize.x = (((check.width * value.x)/72)*25.4);
     realsize.y = (((check.height * value.y)/72)*25.4);
-    //NSLog(@"hellO!?!?!?");
-    //deviceSize is the number of points on the device. ex. magic trackpad is ~368 points (~5.2 in) wide at 72points per inch.
-    //25.4/((coordinate position * device size) * dpi)
-
+    
     return realsize;
 }
 

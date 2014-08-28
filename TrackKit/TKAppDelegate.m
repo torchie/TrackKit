@@ -18,8 +18,6 @@
 {
     /* Pick a size for the scene */
     TKMyScene* scene = [TKMyScene sceneWithSize:CGSizeMake(1024, 768)];
-    //TKDetectorView* detector = [[TKDetectorView alloc] initWithFrame:CGRectMake(512, 120, 360, 240)];
-   // [detector addRegion:NSMakeRect(10, 10, 32, 32)];
     
     //Note: you don't need to construct a tkdetectorview since one already exists from instantiation via nib.
     [scene setDetector:_tkdetector];

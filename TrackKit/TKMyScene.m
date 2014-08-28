@@ -24,14 +24,13 @@
         myLabel.fontSize = 65;
         myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
                                        CGRectGetMidY(self.frame));
-        //[self.view addSubview:detector];
 
         [self addChild:myLabel];
     }
     return self;
 }
 
-
+//Override to add custom detector regions.
 -(void)setDetector:(TKDetectorView*)view {
     detector = view;
     [self.view addSubview:view];
@@ -40,10 +39,8 @@
     
 }
 
-
+//Mouse Down places a spaceship.
 -(void)mouseDown:(NSEvent *)theEvent {
-    /* Called when a mouse click occurs */
-    //NSLog(@"Click detected");
     CGPoint location = [theEvent locationInNode:self];
     SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
     
@@ -58,36 +55,8 @@
 }
 
 -(void)update:(CFTimeInterval)currentTime {
-    //NOTE: ORIGINS ARE CONSIDERED BOTTOM LEFT CORNER IN OSX UI, NOT CENTER.
-    
-    
+    //Call setNeedsDisplay from the detector's superview to prevent touchesMovedWithEvent calls from the built-in trackpad from pausing the scene rendering.
     [detector setNeedsDisplay:YES];
-    //CGPoint framerelative = [self convertToScreenFromLocalPoint:CGPointMake(CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame)) relativeToView:self.view]; //THIS IS IT
-        //CGPoint framerelative = [detector convertToScreenFromLocalPoint:CGPointMake(CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame)) relativeToView:self.view];
-    //CGPointMake(detector.frame.origin.x, detector.frame.origin.y);
-    
-    //CGPointMake(CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame)); //THIS IS THE REAL NSVIEW CENTER
-    //[detector convertPoint:CGPointMake( CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame)) fromView:nil];//[self convertToScreenFromLocalPoint:CGPointMake((detector.frame.size.width / 2),(detector.frame.size.height / 2)) relativeToView:self.view];
-    
-    //[detector convertPoint:CGPointMake( + (detector.frame.size.width / 2), detector.frame.size.height / 2) toView:nil];
-    
-    //[self convertToScreenFromLocalPoint:CGPointMake((detector.frame.size.width / 2),(detector.frame.size.height / 2)) relativeToView:self.view];
-    
-    //CGPointMake((detector.frame.origin.x + (detector.frame.size.width / 2)),(detector.frame.origin.y + (detector.frame.size.height / 2)));
-    //[detector convertPoint:CGPointMake( + (detector.frame.size.width / 2)),((detector.frame.size.height / 2))) fromView:nil];//;
-    
-    
-    //[detector convertPoint:detector.bounds.origin toView:nil];
-    
-    //THE PROBLEM: IT'S EXPECTING COORDINATES FROM THE FRAMERECT SIZE IT WAS INITIALIZED WITH EVEN THOUGH SMALLER ????
-    //CGWarpMouseCursorPosition(framerelative);
-    //NSLog(@"MyScene detector report of detector center: %@", NSStringFromPoint(CGPointMake( CGRectGetMidX(detector.frame),CGRectGetMidY(detector.frame))));
-    //NSLog(@"MyScene converttoscreen center: %@", NSStringFromPoint(framerelative));
-    //CGWarpMouseCursorPosition(CGPointMake((CGFloat)self.size.width/2, (CGFloat)self.size.height/2));
-    /* Called before each frame is rendered */
-    
-    //[detector getTouches];
-    ////NSLog(@" touches %@", [detector getTouches]);
 }
 
 @end
