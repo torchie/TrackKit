@@ -123,7 +123,7 @@
 
 -(CGFloat)realWorldY:(NSTouch *)touch {
     NSSize check = [touch deviceSize];
-    return (((check.height * [touch normalizedPosition].y)/72)*25.4;
+    return (((check.height * [touch normalizedPosition].y)/72)*25.4);
 }
 
 -(CGPoint)realWorldPoint:(CGPoint)value ofTouch:(NSTouch *)touch {
