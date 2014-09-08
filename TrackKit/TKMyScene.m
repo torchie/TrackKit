@@ -10,6 +10,8 @@
 #import "TKDetectorView.h"
 #import "NSScreen+PointConversion.h"
 #import "TKDetectorView+regions.h"
+#import "TKDetectorView+physics.h"
+
 @implementation TKMyScene
 
 -(id)initWithSize:(CGSize)size {    
@@ -50,7 +52,9 @@
     SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
     
     [sprite runAction:[SKAction repeatActionForever:action]];
-    
+    //[detector isBeingTouched];
+    NSTouch* test = [detector fingerNumber:5];
+    [detector realWorldX:[detector fingerNumber:0]];
     [self addChild:sprite];
 }
 

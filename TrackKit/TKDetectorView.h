@@ -39,4 +39,8 @@
 -(NSMutableDictionary*)touches;
 -(NSPoint)convertToScreenFromLocalPoint:(NSPoint)point relativeToView:(NSView *)view;
 
+//Basic methods for getting touch physics information to controller delegates.
+-(BOOL)isBeingTouched;
+-(NSTouch*)firstFinger;
+-(NSTouch*)fingerNumber:(NSUInteger)userFingerNumber;
 @end

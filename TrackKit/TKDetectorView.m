@@ -98,9 +98,31 @@
     [self phys_record];
 }
 
+-(void)touchesEndedWithEvent:(NSEvent *)event {
+    for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseEnded inView:self]) {
+        //[touch_identities setObject:touch forKey:[touch identity]];
+        [touch_identities removeObjectForKey:[touch identity]];
+    }
+    [self phys_record];
+}
 
--(NSSet*)getTouches {
-    return touches;
+-(NSMutableDictionary*)touches {
+    return touch_identities;
+}
+
+-(BOOL)isBeingTouched {
+    return [[touch_identities allValues] count] > 0;
+}
+
+-(NSTouch*)firstFinger {
+    return [[touch_identities allValues] objectAtIndex:0];
+}
+
+-(NSTouch*)fingerNumber:(NSUInteger)userFingerNumber {
+    if([[touch_identities allValues] count] < userFingerNumber){
+        return [self firstFinger];
+    }
+    return [[touch_identities allValues] objectAtIndex:userFingerNumber];
 }
 
 //(C) Nial Giacomelli
