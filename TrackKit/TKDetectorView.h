@@ -41,6 +41,7 @@
 
 //Basic methods for getting touch physics information to controller delegates.
 -(BOOL)isBeingTouched;
+-(BOOL)hasNumberOfTouchings:(NSUInteger)userNumber;
 -(NSTouch*)firstFinger;
 -(NSTouch*)fingerNumber:(NSUInteger)userFingerNumber;
 @end

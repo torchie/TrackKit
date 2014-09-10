@@ -84,7 +84,7 @@
 -(void)touchesBeganWithEvent:(NSEvent *)event {
     
     touch_identities = [[NSMutableDictionary alloc] init];
-    for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseAny inView:self]) {
+    for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseBegan inView:self]) {
         [touch_identities setObject:touch forKey:[touch identity]];
     }
     [self phys_record];
@@ -92,16 +92,19 @@
 
 -(void)touchesMovedWithEvent:(NSEvent *)event {
     
-   for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseAny inView:self]) {
+   for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseMoved inView:self]) {
         [touch_identities setObject:touch forKey:[touch identity]];
     }
     [self phys_record];
 }
 
 -(void)touchesEndedWithEvent:(NSEvent *)event {
-    for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseEnded inView:self]) {
+    /*(for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseEnded inView:self]) {
         //[touch_identities setObject:touch forKey:[touch identity]];
         [touch_identities removeObjectForKey:[touch identity]];
+    }*/
+    for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseEnded inView:self]) {
+        [touch_identities setObject:touch forKey:[touch identity]];
     }
     [self phys_record];
 }
@@ -111,7 +114,43 @@
 }
 
 -(BOOL)isBeingTouched {
-    return [[touch_identities allValues] count] > 0;
+    //isBeingTouched counts for touches whose phase is not ended
+    
+
+    for(NSTouch* touch in [touch_identities allValues]) {
+        //NSLog(@"touch phase %d",[touch phase]);
+        
+        //NSLog(@"example of a touch phase: %d %d %d", NSTouchPhaseStationary, NSTouchPhaseMoved, NSTouchPhaseBegan);
+        if([touch phase] == NSTouchPhaseStationary) {
+            return 1;
+        }
+        if([touch phase] == NSTouchPhaseMoved) {
+            return 1;
+        }
+        if([touch phase] == NSTouchPhaseBegan) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+-(BOOL)hasNumberOfTouchings:(NSUInteger)userNumber {
+    NSUInteger num = 0;
+    for(NSTouch* touch in [touch_identities allValues]) {
+        //NSLog(@"touch phase %d",[touch phase]);
+        
+        //NSLog(@"example of a touch phase: %d %d %d", NSTouchPhaseStationary, NSTouchPhaseMoved, NSTouchPhaseBegan);
+        if([touch phase] == NSTouchPhaseStationary) {
+            num++;
+        } else
+        if([touch phase] == NSTouchPhaseMoved) {
+            num++;
+        } else
+        if([touch phase] == NSTouchPhaseBegan) {
+            num++;
+        }
+    }
+    return (num == userNumber);
 }
 
 -(NSTouch*)firstFinger {

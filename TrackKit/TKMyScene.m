@@ -52,14 +52,16 @@
     SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
     
     [sprite runAction:[SKAction repeatActionForever:action]];
-    //[detector isBeingTouched];
+    [detector isBeingTouched];
     NSTouch* test = [detector fingerNumber:5];
     [detector realWorldX:[detector fingerNumber:0]];
-    [self addChild:sprite];
+[self addChild:sprite];
 }
 
 -(void)update:(CFTimeInterval)currentTime {
     //Call setNeedsDisplay from the detector's superview to prevent touchesMovedWithEvent calls from the built-in trackpad from pausing the scene rendering.
+    NSLog(@"beingtouched %d", [detector isBeingTouched]);
+    NSLog(@"has seven touches? %d", [detector hasNumberofTouchings:7]);
     [detector setNeedsDisplay:YES];
 }
 
