@@ -84,7 +84,7 @@
 -(void)touchesBeganWithEvent:(NSEvent *)event {
     
     touch_identities = [[NSMutableDictionary alloc] init];
-    for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseBegan inView:self]) {
+    for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseAny inView:self]) {
         [touch_identities setObject:touch forKey:[touch identity]];
     }
     [self phys_record];
@@ -92,7 +92,7 @@
 
 -(void)touchesMovedWithEvent:(NSEvent *)event {
     
-   for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseMoved inView:self]) {
+   for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseAny inView:self]) {
         [touch_identities setObject:touch forKey:[touch identity]];
     }
     [self phys_record];
@@ -103,7 +103,7 @@
         //[touch_identities setObject:touch forKey:[touch identity]];
         [touch_identities removeObjectForKey:[touch identity]];
     }*/
-    for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseEnded inView:self]) {
+    for(NSTouch* touch in [event touchesMatchingPhase:NSTouchPhaseAny inView:self]) {
         [touch_identities setObject:touch forKey:[touch identity]];
     }
     [self phys_record];
@@ -164,6 +164,17 @@
     return [[touch_identities allValues] objectAtIndex:userFingerNumber];
 }
 
+-(NSTouch*)firstFling {
+    for(NSTouch* touch in [touch_identities allValues]) {
+        NSLog(@"speed %.2lf, touchphase %d", [self instantaneousVelocity:touch], [touch phase]);
+    }
+    for(NSTouch* touch in [touch_identities allValues]) {
+        if([touch phase] == NSTouchPhaseEnded) {
+            return touch;
+        }
+    }
+    return nil;
+}
 //(C) Nial Giacomelli
 - (NSPoint)convertToScreenFromLocalPoint:(NSPoint)point relativeToView:(NSView *)view {
     

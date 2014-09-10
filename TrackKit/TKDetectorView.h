@@ -44,4 +44,6 @@
 -(BOOL)hasNumberOfTouchings:(NSUInteger)userNumber;
 -(NSTouch*)firstFinger;
 -(NSTouch*)fingerNumber:(NSUInteger)userFingerNumber;
+
+-(NSTouch*)firstFling;
 @end

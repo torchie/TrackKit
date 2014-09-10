@@ -36,9 +36,11 @@
         } else {
             NSMutableArray*  temp = [touch_positions objectForKey:[x identity]];
             NSMutableArray* times = [touch_times objectForKey:[x identity]];
-        
-            [temp addObject:[NSValue valueWithPoint:x.normalizedPosition]];
-            [times addObject:[NSNumber numberWithDouble:CACurrentMediaTime()]];
+    
+            if([x phase] != NSTouchPhaseEnded) {
+                [times addObject:[NSNumber numberWithDouble:CACurrentMediaTime()]];
+                [temp addObject:[NSValue valueWithPoint:x.normalizedPosition]];
+            }
         }
         
     }

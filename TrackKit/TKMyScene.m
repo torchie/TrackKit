@@ -55,13 +55,15 @@
     [detector isBeingTouched];
     NSTouch* test = [detector fingerNumber:5];
     [detector realWorldX:[detector fingerNumber:0]];
-[self addChild:sprite];
+    [self addChild:sprite];
 }
 
 -(void)update:(CFTimeInterval)currentTime {
     //Call setNeedsDisplay from the detector's superview to prevent touchesMovedWithEvent calls from the built-in trackpad from pausing the scene rendering.
     NSLog(@"beingtouched %d", [detector isBeingTouched]);
-    NSLog(@"has seven touches? %d", [detector hasNumberofTouchings:7]);
+    NSLog(@"has seven touches? %d", [detector hasNumberOfTouchings:7]);
+    NSTouch* test = [detector firstFling];
+    NSLog(@"speed of first fling %.5lf, phase %d", [detector instantaneousVelocity:test], [test phase]);
     [detector setNeedsDisplay:YES];
 }
 
